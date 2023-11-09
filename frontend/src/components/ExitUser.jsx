@@ -30,9 +30,10 @@ export const ExitUser = () => {
 					}),
 				});
 			if (response.ok) {
-				console.log('delete successfully');
-				//　ここでres.send();を表示したい
-				alert('Account info has been deleted :)');
+				const res = await response.json();
+				console.log('Server response:', res);
+				
+				alert(res.message);
 			} else {
 				console.error('Failed to regist');
 			}
@@ -51,6 +52,7 @@ export const ExitUser = () => {
 
 	return (
 		<div>
+			<b>delete account</b>
 			<form onSubmit={handleRegist}>
 			<label>
 				user :

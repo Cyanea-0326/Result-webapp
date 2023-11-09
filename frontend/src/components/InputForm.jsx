@@ -42,12 +42,10 @@ export const InputForm = () => {
 				if (response.ok) {
 					const res = await response.json();
 					console.log('Server response:', res);
-					// console.log('Saved transaction successfully');
 					
 					alert(res.message);
 				} else {
 					console.error('Failed to save bet & payoff');
-					// alert('Transaction failed ; ;');
 				}
 				} catch (error) {
 					console.error('Error:', error);

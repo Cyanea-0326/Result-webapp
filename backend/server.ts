@@ -53,20 +53,21 @@ app.post("/saveTx", async (req: Request, res: Response) => {
 		const [u_row]: any = await db.connection.promise().query(`SELECT u_id, pin FROM users WHERE u_name = (?)`, [user]);
 		const u_id = u_row[0] ? u_row[0].u_id : null;
 		const pin = u_row;
-		console.log("auth is", auth_pin, "\n", u_id, pin);
+		// console.log("auth is", auth_pin, "\n", u_id, pin);
 		if (u_id == null || pin === auth_pin) {
 			console.log("User not found or PIN is different");
 			return res.json({ message: "User not found or PIN is different" });
 		}
 		
 		const total_amount = (-1 * (parseInt(bet) - parseInt(payoff)));
-		console.log(bet, "\n", payoff, "\n", total_amount);
+		// console.log(bet, "\n", payoff, "\n", total_amount);
 		
 		await db.connection.promise().query('INSERT INTO transactions (u_id, bet_amount, pay_off, result) VALUES (?, ?, ?, ?)', [u_id, bet, payoff, total_amount]);
 		
 		const [rows]: any = await db.connection.promise().query('SELECT MAX(tx_id) FROM transactions');
-		console.log(rows);
 		const latestId: number = rows[0]['MAX(tx_id)'];
+		// console.log(rows, latestId);
+
 		// init temp
 		await db.connection.promise().query("DROP TEMPORARY TABLE IF EXISTS tmp_result");
 		
@@ -80,13 +81,12 @@ app.post("/saveTx", async (req: Request, res: Response) => {
 		
 		await db.connection.promise().query("DROP TEMPORARY TABLE IF EXISTS tmp_result");
 
-		return res.json({ message: "Saved transaction successfully" });
 		res.status(200).json({ message: 'Saved transaction successfully' });
+		console.log('Saved transaction successfully');
 	} catch (error) {
 		console.error('Error saving number:', error);
 		res.status(500).json({ message: 'Failed to save number' });
 	}
-	
 });
 
 app.post("/exitUser", async (req: Request, res: Response) => {
@@ -96,14 +96,14 @@ app.post("/exitUser", async (req: Request, res: Response) => {
 		const [u_row]: any = await db.connection.promise().query(`SELECT u_id, pin FROM users WHERE u_name = (?)`, [user]);
 		const u_id = u_row[0] ? u_row[0].u_id : null;
 		const pin = u_row;
-		console.log("auth is", auth_pin, "\n", u_id, pin);
+		// console.log("auth is", auth_pin, "\n", u_id, pin);
 		if (u_id == null || pin === auth_pin) {
 			console.log("User not found or PIN is different");
-			res.send("User not found or PIN is different");
+			res.status(200).json({ message: "User not found or PIN is different" });
 			return ;
 		}
 		db.exit_user(u_id);
-		res.send("User data has been deleted...");
+		res.status(200).json({ message: "User data has been deleted..." });
 	} catch (error) {
 		console.error('Error saving number:', error);
 		res.status(500).json({ message: 'Failed to save number' });
