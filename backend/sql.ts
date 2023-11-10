@@ -1,5 +1,7 @@
 import mysql from "mysql2";
 import * as dotenv from 'dotenv';
+import { resolve } from "path";
+import { log } from "console";
 
 dotenv.config();
 
@@ -18,8 +20,6 @@ connection.connect((error) => {
 	}
 	console.log("Success connecting to MySQL");
 });
-
-
 
 export function init_tables() {
 	connection.connect(function (err) {
@@ -55,7 +55,7 @@ export function init_tables() {
 			console.log("\n////////////////////////////////////////\n\n");
 		});
 	});
-}
+};
 
 export function regist_new_user(u_name: String, pin: String): Promise<any> {
 	return new Promise((resolve, reject) => {
@@ -75,15 +75,34 @@ export function regist_new_user(u_name: String, pin: String): Promise<any> {
 						console.log('regist new user');
 						resolve (0);
 					});
-				}
+				};
 			});
 		});
 	});
-}
+};
 
-export function get_my_transactions() {
+export async function rendering_transaction(u_id: Number): Promise<any> {
 
-}
+	try {
+		await connection.connect();
+	
+		const [rows]: any = await connection.query("SELECT * FROM transactions WHERE u_id = (?)", [u_id]);
+		console.log("TX_LIST is: ", rows);
+		return rows;
+	  } catch (err) {
+		console.error(err);
+		throw err;
+	  } finally {
+		await connection.end();
+
+		// connection.connect(function (err) {
+		// 	if (err) throw err;
+		// 	const [rows]: any = connection.query("SELECT * FROM transactions WHERE u_id = (?)", [u_id]);
+		// 	console.log("TX_LIST is: ", rows);
+		// 	resolve (rows);
+		// });
+	};
+};
 
 export function exit_user(u_id: Number) {
 	connection.query("DELETE FROM transactions WHERE u_id = (?)", [u_id],
