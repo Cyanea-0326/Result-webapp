@@ -14,10 +14,6 @@ export const ExitUser = () => {
 		const handleRegist = async (event) => {
 			event.preventDefault();
 
-			if (user.trim() === '') {
-				alert('フィールドを入力してください。');
-			} else {
-
 			try {
 				const response = await fetch('http://localhost:3001/exitUser', {
 					method: 'POST',
@@ -29,19 +25,19 @@ export const ExitUser = () => {
 						auth_pin: pin
 					}),
 				});
+
 			if (response.ok) {
 				const res = await response.json();
 				console.log('Server response:', res);
 				
 				alert(res.message);
 			} else {
-				console.error('Failed to regist');
+				console.error('Failed');
 			}
 			} catch (error) {
 				console.error('Error:', error);
 			}
 		};
-	}
 	
 	const isRegistFormValid = (user.trim() !== '' && pin.trim() !== '' && isValidPin(pin));
 
