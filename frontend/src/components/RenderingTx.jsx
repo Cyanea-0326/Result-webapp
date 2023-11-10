@@ -73,7 +73,7 @@ export function RenderingTx() {
 					<thead>
 						<tr>
 						<th style={{ width: '0px' }}>TX_ID</th>
-						<th style={{ width: '150px' }}>U_ID</th>
+						{/* <th style={{ width: '150px' }}>U_ID</th> */}
 						<th style={{ width: '150px' }}>Bet Amount</th>
 						<th style={{ width: '150px' }}>Pay Off</th>
 						<th style={{ width: '150px' }}>Result</th>
@@ -84,7 +84,7 @@ export function RenderingTx() {
 						{transactions.map((transaction) => (
 							<tr key={transaction.tx_id}>
 							<td style={{ textAlign: 'center' }}>{transaction.tx_id}</td>
-							<td style={{ textAlign: 'center' }}>{transaction.u_id}</td>
+							{/* <td style={{ textAlign: 'center' }}>{transaction.u_id}</td> */}
 							<td style={{ textAlign: 'center' }}>{transaction.bet_amount}</td>
 							<td style={{ textAlign: 'center' }}>{transaction.pay_off}</td>
 							<td style={{ textAlign: 'center' }}>{transaction.result}</td>
