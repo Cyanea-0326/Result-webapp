@@ -31,12 +31,16 @@ export function RenderingTx() {
 				const res = await response.json();
 				console.log('Server response:', res);
 				setTransactions(res.tx_data);
-				alert(res.message);
+				// alert(res.message);
 			} else {
-				console.error('Failed');
+				const res = await response.json();
+				console.log('Server response:', res);
+
+				alert(res.message);
 			};
 		} catch (error) {
-			console.error('Error:', error);
+			console.log(error);
+			alert(`${error}\nPls check status-code`);
 		};
 
 	};
@@ -51,7 +55,7 @@ export function RenderingTx() {
 	return (
 		<div style={{ display: 'flex' }}>
 			<div style={{ marginRight: '100px' }}>
-				<b>GET MY TRANSACTION</b>
+				<b>GET TRANSACTION</b>
 				<form onSubmit={handleGetTx}>
 				<label>
 					user :
@@ -60,9 +64,9 @@ export function RenderingTx() {
 					<br/>
 				<label>
 					PIN :
-					<input type="pin" value={pin} onChange={handlePinChange} />
+					<input type="pin" value={pin} onChange={handlePinChange} maxLength={4} pattern="[0-9]{4}" />
 					<br/>
-					<button type="regist" disabled={!isRegistFormValid} maxLength={4} pattern="[0-9]{4}">get</button>
+					<button type="regist" disabled={!isRegistFormValid} >get</button>
 				</label>
 				</form>
 			</div>

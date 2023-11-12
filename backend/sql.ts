@@ -47,8 +47,7 @@ export function init_tables() {
 			u_id INT, \
 			bet_amount DECIMAL, \
 			pay_off DECIMAL, \
-			result DECIMAL, \
-			total_result DECIMAL \
+			result DECIMAL \
 		)",
 			function (err, result) { if (err) throw err
 			console.log("INIT TABLES SUCCESS");

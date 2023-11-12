@@ -35,10 +35,14 @@ export const RegistUser = () => {
 
 				alert(res.message);
 			} else {
-				console.error('Failed to regist');
+				const res = await response.json(); // サーバーサイドからのJSONデータを受信
+				console.log('Server response:', res);
+
+				alert(res.message);
 			}
 			} catch (error) {
 				console.error('Error:', error);
+				alert(`${error}\nPls check status-code`);
 			}
 		};
 	}
