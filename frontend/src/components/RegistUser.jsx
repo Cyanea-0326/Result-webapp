@@ -63,7 +63,7 @@ export const RegistUser = () => {
 					<span>USER_NAME</span>
 					<input type="regist_user" value={regist_user} onChange={handleRegistUserChange} 
 					className="flex place-items-center border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-					placeholder="Enter text"/>
+					placeholder="Enter name"/>
 				</label>
 				<label>
 					<span>PIN</span>

@@ -51,21 +51,28 @@ export const ExitUser = () => {
 	}
 
 	return (
-		<div>
-			<b>DELETE ACCOUNT</b>
-			<form onSubmit={handleRegist}>
+		<div class="p-2 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-x-4">
+			<div className='flex flex-col items-center'>
+			<p className='font-bold border-b border-gray-800'>DELETE USER</p>
+			<form onSubmit={handleRegist} className='pt-4 flex flex-col place-items-center'>
 			<label>
-				user :
-				<input type="user" value={user} onChange={handleUserChange} />
+				<span>USER</span>
+				<input type="user" value={user} onChange={handleUserChange} 
+				className="flex place-items-center border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+				placeholder="Enter name"/>
 			</label>
-				<br/>
 			<label>
-				PIN :
-				<input type="pin" value={pin} onChange={handlePinChange} />
-				<br/>
-				<button type="regist" disabled={!isRegistFormValid} maxLength={4} pattern="[0-9]{4}">exit</button>
+				<span>PIN</span>
+				<input type="pin" value={pin} onChange={handlePinChange} 
+				className="flex place-items-center border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+				placeholder="Enter PIN"/>
 			</label>
-			</form>
+				<div className='pt-4 pb-2'>
+					<button type="regist" disabled={!isRegistFormValid} maxLength={4} pattern="[0-9]{4}" 
+					className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-md transition duration-300 ease-in-out">delete</button>
+				</div>
+			</form>	
+			</div>
 		</div>
 	);
 }

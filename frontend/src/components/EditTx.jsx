@@ -67,37 +67,49 @@ export const EditTx = () => {
 		}
 
 	return (
-		<div>
-			<b>EDIT TRANSACTION</b>
-			<form onSubmit={handleSubmit}>
+		<div class="p-2 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-x-4">
+			<div className='flex flex-col items-center'>
+
+			<p className='font-bold border-b border-gray-800'>EDIT TRANSACTION</p>
+			<form onSubmit={handleSubmit} className='pt-4 flex flex-col place-items-center'>
 				<label>
-				user :
-				<input type="user" value={user} onChange={handleUserChange} />
+				<span>USER</span>
+				<input type="user" value={user} onChange={handleUserChange}
+				className="flex place-items-center border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+				placeholder="Enter name"/>
 				</label>
-					<br/>
 				<label>
-				PIN :
-				<input type="pin" value={pin} onChange={handlePinChange}  maxLength={4} pattern="[0-9]{4}"/>
+				<span>PIN</span>
+				<input type="pin" value={pin} onChange={handlePinChange}  maxLength={4} pattern="[0-9]{4}"
+				className="flex place-items-center p border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+				placeholder="Enter 4 numbers"/>
 				</label>
-					<br/>
 				<label>
-				TX_ID :
-				<input type="tx_id" value={tx_id} onChange={handleTx_idChange} />
+				<span>TX_ID</span>
+				<input type="tx_id" value={tx_id} onChange={handleTx_idChange}
+				className="flex place-items-center p border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+				placeholder="Enter 4 numbers"/>
 				</label>
-					<br/>
 				<label>
-				edit_bet :
-				<input type="bet" value={bet} onChange={handleBetChange} />
+				<span>EDIT_BET</span>
+				<input type="bet" value={bet} onChange={handleBetChange} 
+				className="flex place-items-center p border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+				placeholder="Enter 4 numbers"/>
 				</label>
-					<br/>
 				<label>
-				edit_payoff	:
-				<input type="payoff" value={payoff} onChange={handlePayoffChange} />
+				<span>EDIT_PAYOFF</span>
+				<input type="payoff" value={payoff} onChange={handlePayoffChange} 
+				className="flex place-items-center p border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+				placeholder="Enter 4 numbers"/>
 				</label>
-					<br />
-				<button type="submit" disabled={!isFormValid} >edit</button>
+				<div className='pt-4 pb-2'>
+					<button type="submit" disabled={!isFormValid} 
+					className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-md transition duration-300 ease-in-out">
+					edit</button>
+				</div>
 			</form>
-				<p>※TXデータを削除する際は、betとpayoffに DELETE と入力してください</p>
+				<p className='fpt-2 pb-2 text-gray-300'>※TXデータを削除する際は、BETとPAYOFFに DELETE と入力してください</p>
+			</div>
 		</div>
 	);
 };
