@@ -32,10 +32,14 @@ export const ExitUser = () => {
 				
 				alert(res.message);
 			} else {
-				console.error('Failed');
+				const res = await response.json();
+				console.log('Server response:', res);
+				
+				alert(res.message);
 			}
 			} catch (error) {
 				console.error('Error:', error);
+				alert(`${error}\nPls check status-code`);
 			}
 		};
 	
@@ -48,7 +52,7 @@ export const ExitUser = () => {
 
 	return (
 		<div>
-			<b>delete account</b>
+			<b>DELETE ACCOUNT</b>
 			<form onSubmit={handleRegist}>
 			<label>
 				user :
@@ -62,7 +66,6 @@ export const ExitUser = () => {
 				<button type="regist" disabled={!isRegistFormValid} maxLength={4} pattern="[0-9]{4}">exit</button>
 			</label>
 			</form>
-			<br />
 		</div>
 	);
 }
