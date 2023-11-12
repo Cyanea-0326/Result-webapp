@@ -55,7 +55,7 @@ export const RegistUser = () => {
 	}
 
 	return (
-		<div class="p-2 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-x-4">
+		<div class="p-2 bg-white rounded-b-xl shadow-lg">
 			<div className='flex flex-col items-center'>
 			<p className='font-bold border-b border-gray-800'>REGIST USER</p>
 				<form onSubmit={handleRegist} className='pt-4 flex flex-col place-items-center'>

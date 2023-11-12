@@ -67,7 +67,7 @@ export const EditTx = () => {
 		}
 
 	return (
-		<div class="p-2 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-x-4">
+		<div class="p-2 bg-white rounded-b-xl shadow-lg">
 			<div className='flex flex-col items-center'>
 
 			<p className='font-bold border-b border-gray-800'>EDIT TRANSACTION</p>
@@ -88,19 +88,19 @@ export const EditTx = () => {
 				<span>TX_ID</span>
 				<input type="tx_id" value={tx_id} onChange={handleTx_idChange}
 				className="flex place-items-center p border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-				placeholder="Enter 4 numbers"/>
+				placeholder="Enter tx_id"/>
 				</label>
 				<label>
 				<span>EDIT_BET</span>
 				<input type="bet" value={bet} onChange={handleBetChange} 
 				className="flex place-items-center p border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-				placeholder="Enter 4 numbers"/>
+				placeholder="Enter"/>
 				</label>
 				<label>
 				<span>EDIT_PAYOFF</span>
 				<input type="payoff" value={payoff} onChange={handlePayoffChange} 
 				className="flex place-items-center p border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-				placeholder="Enter 4 numbers"/>
+				placeholder="Enter"/>
 				</label>
 				<div className='pt-4 pb-2'>
 					<button type="submit" disabled={!isFormValid} 

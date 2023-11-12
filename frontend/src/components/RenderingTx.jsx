@@ -56,7 +56,7 @@ export function RenderingTx() {
 		// <div style={{ display: 'flex' }}>
 		// 	<div style={{ marginRight: '100px' }}>
 		<div className=''>
-				<div class="p-2 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-x-4">
+				<div class="p-2 bg-white rounded-b-xl shadow-lg">
 					<div className='flex flex-col items-center'>
 					<p className='font-bold border-b border-gray-800'>GET TRANSACTION</p>
 						<form onSubmit={handleGetTx} className='pt-4 flex flex-col place-items-center'>
@@ -70,11 +70,12 @@ export function RenderingTx() {
 							<span>PIN</span>
 							<input type="pin" value={pin} onChange={handlePinChange} maxLength={4} pattern="[0-9]{4}"
 							className="flex place-items-center border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-							placeholder="Enter name"/>
+							placeholder="Enter PIN"/>
 						</label>
 							<div className='pt-4 pb-2'>
 								<button type="regist" disabled={!isRegistFormValid} maxLength={4} pattern="[0-9]{4}" 
-								className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-md transition duration-300 ease-in-out">regist</button>
+								className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-md transition duration-300 ease-in-out">
+								get</button>
 							</div>
 						</form>
 				</div>
