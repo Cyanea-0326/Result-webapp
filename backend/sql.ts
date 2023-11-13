@@ -21,6 +21,7 @@ connection.connect((error) => {
 	console.log("Success connecting to MySQL");
 });
 
+
 export function init_tables() {
 	connection.connect(function (err) {
 		if (err) throw err;

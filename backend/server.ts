@@ -7,8 +7,8 @@ import * as sql from "./sql";
 const app: Express = express();
 const port = 3001;
 const limiter = rateLimit({
-	windowMs: 15 * 60 * 1000, // 15分間
-	max: 10, // 最大100回まで
+	windowMs: 10 * 60 * 1000, // 1分間
+	max: 50, // 最大100回まで
 	message: 'Too many requests from this IP, please try again later.',
 });
 
@@ -20,28 +20,6 @@ app.get("/", (req: Request, res: Response) => {
 	sql.init_tables();
 	res.send("Hello World!");
 });
-
-// declare interface RowDataPacket {
-// 	constructor: {
-// 	  name: "RowDataPacket";
-// 	};
-// 	[column: string]: any;
-// 	[column: number]: any;
-// }
-// interface IUsers extends RowDataPacket {
-// 	u_id: Number
-// 	u_name: String
-// 	pin: Number
-// 	create_at: any
-// 	// [Symbol.iterator](): IterableIterator<OkPacket | RowDataPacket[] | ResultSetHeader[] | RowDataPacket[][] | OkPacket[] | ProcedureCallPacket>;
-// }
-// interface ITransactions {
-// 	tx_id: Number
-// 	u_id: Number
-// 	bet_amount: Number
-// 	pay_off: Number
-// 	result: Number
-// };
 
 app.post("/registUser", async (req: Request, res: Response) => {
 	const { regist_user, regist_pin } = req.body;

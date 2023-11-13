@@ -59,30 +59,40 @@ export const InputForm = () => {
 	const isFormValid = user.trim() !== '' && pin.trim() !== '' && bet.trim() !== '' && payoff.trim() !== '';
 
 	return (
-		<div>
-			<form onSubmit={handleSubmit}>
-				<label>
-				user :
-				<input type="user" value={user} onChange={handleUserChange} />
-				</label>
-					<br/>
-				<label>
-				PIN :
-				<input type="pin" value={pin} onChange={handlePinChange} />
-				</label>
-					<br/>
-				<label>
-				bet_amount :
-				<input type="bet" value={bet} onChange={handleBetChange} />
-				</label>
-					<br/>
-				<label>
-				payoff	:
-				<input type="payoff" value={payoff} onChange={handlePayoffChange} />
-				</label>
-					<br />
-				<button type="submit" disabled={!isFormValid}>submit</button>
-			</form>
+		<div class="p-2 bg-white rounded-b-xl shadow-lg">
+			<div className='flex flex-col items-center'>
+			<p className='font-bold border-b border-gray-800'>SUBMIT TRANSACTION</p>
+				<form onSubmit={handleSubmit} className='pt-4 flex flex-col place-items-center'>
+					<label>
+					<span>USER</span>
+					<input type="user" value={user} onChange={handleUserChange}
+					className="flex place-items-center border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+					placeholder="Enter name" />
+					</label>
+					<label>
+					<span>PIN</span>
+					<input type="pin" value={pin} onChange={handlePinChange} 
+					className="flex place-items-center border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+					placeholder="Enter PIN"/>
+					</label>
+					<label>
+					<span>BET</span>
+					<input type="bet" value={bet} onChange={handleBetChange} 
+					className="flex place-items-center border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+					placeholder="Enter"/>
+					</label>
+					<label>
+					<span>PAYOFF</span>
+					<input type="payoff" value={payoff} onChange={handlePayoffChange} 
+					className="flex place-items-center border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+					placeholder="Enter"/>
+					</label>
+					<div className='pt-4 pb-2'>
+						<button type="submit" disabled={!isFormValid} className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-md transition duration-300 ease-in-out">
+						submit</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	);
 }
